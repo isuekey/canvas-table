@@ -1,0 +1,9 @@
+{
+  "name": "canvas-table",
+  "version": "0.0.1",
+  "description": "use canvas to draw a table",
+  "main": "index.js",
+  "author": "liu.hanru",
+  "license": "MIT",
+  "private": false
+}
