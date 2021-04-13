@@ -2,23 +2,31 @@
   "name": "canvas-table",
   "version": "0.0.1",
   "description": "use canvas to draw a table",
-  "main": "dist/canvastable.js",
-  "types": "dist/index.d.ts",
-  "module": "scr/index.js",
+  "main": "dist/canvas-table.umd.js",
+  "module": "dist/canvas-table.esm.js",
+  "unpkg": "dist/canvas-table.min.js",
+  "types": "dist/canvas-table.esm.js",
   "author": "liu.hanru",
   "scripts": {
     "test": "mocha",
-    "tsd": "tsc",
-    "build": "webpack"
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/canvas-table.umd.js",
+    "build:esm": "rollup --config build/rollup.config.js --format esm --file dist/canvas-table.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/canvas-table.min.js",
+    "build": "yarn build:umd; yarn build:esm; yarn build:unpkg"
   },
   "license": "MIT",
   "private": false,
   "repository": "git@github.com:isuekey/canvas-table.git",
   "devDependencies": {
     "chai": "^4.3.4",
+    "esm": "^3.2.25",
     "mocha": "^8.3.2",
-    "typescript": "^4.2.3",
-    "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0"
+    "rollup": "^2.45.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "simple-uuidv4": "../simple-uuidv4/"
   }
 }
