@@ -616,8 +616,10 @@ serialize-javascript@5.0.1:
   dependencies:
     randombytes "^2.1.0"
 
-simple-uuidv4@../simple-uuidv4/:
-  version "0.0.1"
+simple-uuidv4@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/simple-uuidv4/-/simple-uuidv4-0.0.3.tgz#0886847c7b90809a85305eb9ce7cd24066a25de4"
+  integrity sha512-IaG3FCwczjtOCXBi+RE2plUUKWU9FbMJ3KlDI3YkIbXxOHfxon0Ctf54NKJizVCpYLCRuUlSw36fXGAbjgDeCg==
 
 sourcemap-codec@^1.4.4:
   version "1.4.8"

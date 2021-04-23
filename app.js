@@ -1,3 +1,4 @@
+// 这里需要这样写，不然很多东西不支持了
 import * as CanvasTable from './dist/canvas-table.esm.js';
 
 const canvasTable = new CanvasTable.table.CanvasTable('canvas-table');
@@ -18,6 +19,12 @@ const frameData = {
       { label:'操作', type:[] },
     ],
   }],
+  style:{
+    fillStyle:'white', fill:true,
+    border:true,
+    borderColor:'green',
+    borderWidth:'2',
+  },
 };
 const tableData = {
   body:[

@@ -12,7 +12,8 @@
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/canvas-table.umd.js",
     "build:esm": "rollup --config build/rollup.config.js --format esm --file dist/canvas-table.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/canvas-table.min.js",
-    "build": "yarn build:umd; yarn build:esm; yarn build:unpkg"
+    "build": "yarn build:umd; yarn build:esm; yarn build:unpkg",
+    "watch": "rollup --config build/rollup.config.js --format esm --file dist/canvas-table.esm.js -w"
   },
   "license": "MIT",
   "private": false,
@@ -27,6 +28,6 @@
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
-    "simple-uuidv4": "../simple-uuidv4/"
+    "simple-uuidv4": "^0.0.3"
   }
 }

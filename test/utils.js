@@ -1,6 +1,6 @@
 
 const { assert, expect, should } = require('chai');
-const { random } = require('../index.js');
+const { random } = require('../test.index.js');
 
 describe('uuid v4', () => {
   const times = 409600;
