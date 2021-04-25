@@ -3,22 +3,41 @@ import * as CanvasTable from './dist/canvas-table.esm.js';
 
 const canvasTable = new CanvasTable.table.CanvasTable('canvas-table');
 const frameData = {
-  header:[{
+  left:{
+    header:[{
+      children:[
+        { label:'索引', type:[Symbol.for('index')] },
+      ],
+    }],
     children:[
-      { label:'索引', type:[Symbol.for('index')] },
-      { label:'姓名', type:[Symbol.for('string')], labelProperty:'name', },
-      { label:'手机号', type:[], labelProperty:'phone' },
-      { label:'操作', type:[] },
+      { type:[Symbol.for('index')] },
     ],
-  }],
-  body:[{
+  },
+  main:{
+    header:[{
+      children:[
+        { label:'姓名', type:[Symbol.for('string')], labelProperty:'name', },
+        { label:'手机号', type:[], labelProperty:'phone' },
+      ],
+    }],
+    children:[
+      { type:[Symbol.for('string')], labelProperty:'name', },
+      { type:[], labelProperty:'phone' },
+    ],
+  },
+  right:{
+    header:[{
+      children:[
+        { label:'操作', type:[] },
+      ],
+    }],
     children:[
       { type:[Symbol.for('index')] },
       { type:[Symbol.for('string')], labelProperty:'name', },
       { type:[], labelProperty:'phone' },
       { label:'操作', type:[] },
     ],
-  }],
+  },
   style:{
     fillStyle:'white', fill:true,
     border:true,

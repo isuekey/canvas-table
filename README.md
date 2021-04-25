@@ -118,14 +118,26 @@ cell:数组内容 = {
   iconProperty:'子元素对应数据的图标属性', // 存在type:icon时使用
 };
 row = {
+  style,
   children:[cell],
 };
 frameData = {
-  header:[row],
-  left:[row],
-  body:[row],
-  right:[row],
-  footer:[row],
+  left:{
+    header:[row],
+    loops:[cell],
+  },
+  main:{
+    header:[row],
+    loops:[cell],
+  },
+  right:{ 
+    header:[row],
+    loops:[cell],
+  },
+  footer:{
+    header:[row],
+    loops:[cell],
+  },
 };
 data={
   ...someProperties

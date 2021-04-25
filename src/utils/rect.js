@@ -42,6 +42,11 @@ class Vector {
     return new Vector(...newVectorBase);
   }
 };
+
+const offsetSize = (rect=[], left=0, top=0, right=0, bottom=0) =>{
+  const [l=0, t=0, w=0, h=0] = rect;
+  return [l+left, t + top, w - right - left, h - bottom - top];
+};
 const pointSymbol = Symbol('point');
 const xedgeSymbol = Symbol('xedge');
 const yedgeSymbol = Symbol('yedge');
@@ -62,6 +67,9 @@ class Rect {
   get yedge() {
     return this[yedgeSymbol];
   }
+  get rect() {
+    return [...this.point, this.getWidth(), this.getHeight()];
+  }
   getWidth() {
     if(this.width) return this.width;
     if(!this.point || !this.xedge) return this.width;
@@ -77,20 +85,25 @@ class Rect {
     return this.height;
   }
   drawStyle(ctx, style={}) {
-    const rect = [...this.point, this.getWidth(), this.getHeight()];
+    const rect = this.rect;
     ctx.clearRect(...rect);
+    let contentRect = rect;
     if(style.fill) {
       ctx.fillStyle = style.fillStyle;
       ctx.fillRect(...rect);
+      contentRect = rect;
     }
     if(style.border) {
+      const bw = style.borderWidth/2;
+      const borderRect = offsetSize(rect, bw, bw, bw, bw);
       ctx.strokeStyle = style.borderColor;
       ctx.lineWidth = style.borderWidth;
-      ctx.strokeRect(...rect);
+      ctx.strokeRect(...borderRect);
+      contentRect = borderRect;
     }
+    return offsetSize(contentRect, 0, 0, 0, 0);
   }
-  scaleByPx(px) {
-  }
+  static offsetSize = offsetSize;
 };
 
 Rect.fromAxisWidthHeight = (x, y, width, height) => {

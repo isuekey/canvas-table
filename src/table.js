@@ -43,19 +43,19 @@ class CanvasTable {
     this[handleSymbol] = Promise.resolve('ok');
     return this;
   }
-  handleDrawFrame(frameData={}) {
-    const style = frameData.style || {
-      fillStyle:'green',
-      fill:true,
-    };
+  prepareDraw(frameData=this.frameData, rect) {
+  }
+  handleDrawFrame(frameData=this.frameData) {
+    const style = frameData.style;
     const ctx = this[contextSymbol];
     this.canvas.then((canvas) => {
       const canvasRect = utils.rect.Rect.fromAxisWidthHeight(0, 0, canvas.width, canvas.height);
-      canvasRect.drawStyle(ctx, style);
+      const contentRect = canvasRect.drawStyle(ctx, style);
+      const prepared = this.prepareDraw(frameData, Rect.fromAxisWidthHeight(...contentRect));
     });
     return this.canvas;
   };
-  drawFrame(frameData={}){
+  drawFrame(frameData={style:{}}){
     this.frameData = frameData;
     this[handleSymbol] = this[handleSymbol].then(()=> {
       return this.handleDrawFrame(frameData);
